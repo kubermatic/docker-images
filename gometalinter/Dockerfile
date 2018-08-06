@@ -2,8 +2,6 @@ FROM golang:1.10-alpine3.8 as buildstep
 
 RUN ["apk", "add", "--no-cache", "git"]
 
-# WORKDIR /go/bin
-
 RUN go get -d github.com/alecthomas/gometalinter
 WORKDIR /go/src/github.com/alecthomas/gometalinter
 RUN git checkout v2.0.6
@@ -34,5 +32,7 @@ WORKDIR /go/src/github.com/securego/gosec
 RUN git checkout 1.0.0
 RUN go install -v github.com/securego/gosec/cmd/...
 
+
 FROM golang:1.10-alpine3.8
+RUN apk add --no-cache make
 COPY --from=buildstep /go/bin/* /usr/local/bin/
