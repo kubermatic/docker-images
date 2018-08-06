@@ -30,6 +30,11 @@ WORKDIR /go/src/github.com/securego/gosec
 RUN git checkout 1.0.0
 RUN go install -v github.com/securego/gosec/cmd/...
 
+RUN go get -d github.com/client9/misspell
+WORKDIR /go/src/github.com/client9/misspell
+RUN git checkout v0.3.4
+RUN go install -v github.com/client9/misspell/cmd/...
+
 
 FROM golang:1.10
 COPY --from=buildstep /go/bin/* /usr/local/bin/
