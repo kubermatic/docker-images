@@ -12,12 +12,12 @@ RUN go install -v golang.org/x/lint/golint
 
 RUN go get -d github.com/opennota/check
 WORKDIR /go/src/github.com/opennota/check
-#RUN git checkout 0c771f5545ff495a81aad2916c3f16add0cd3b55 # Sep 11 2018
+RUN git checkout 0c771f5545ff495a81aad2916c3f16add0cd3b55 # Sep 11 2018
 RUN go install -v github.com/opennota/check/cmd/...
 
 RUN go get -d honnef.co/go/tools/cmd/...
 WORKDIR /go/src/honnef.co/go/tools
-#RUN git checkout 88497007e8588ea5b6baee991f74a1607e809487 # Sep 20 2018
+RUN git checkout 88497007e8588ea5b6baee991f74a1607e809487 # July 28 2018
 RUN go install -v honnef.co/go/tools/cmd/...
 
 RUN go get -d github.com/kisielk/errcheck
